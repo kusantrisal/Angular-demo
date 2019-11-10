@@ -1,0 +1,155 @@
+<!-- flag to show or hide page -->
+<!-- <div [style.display]="'block'"> -->
+ <div [style.display]="display"> 
+
+<p>{{name}}</p>
+
+<p>{{2+2}}</p>
+<p>{{"Welcome " + name}}</p>
+<!-- call javascript method -->
+<p>{{name.length}}</p>
+<p>{{name.toUpperCase()}}</p>
+<!-- call method in component -->
+<p>{{greetUser()}}</p>
+<!-- get windows or env variables -->
+<p>{{stieUrl}}</p>
+
+<!-- interpolution only works with string -->
+<input [id]="myId" type="text" value="Hello" />
+<hr>
+<input id="{{myId}}" type="text" value="Hello"><br>
+
+<!-- propety binding -->
+<input [disabled]="isDisabled" id="{{myInput}}" type="text" value="Hello"><br>
+<input bind-disabled="isDisabled" id="{{myInput}}" type="text" value="Hello"><br>
+
+
+<!-- class binding -->
+
+<!-- regular way -->
+<h2 class="custom-success">Success</h2>
+<h2 class="custom-warning">Warning</h2>
+<h2 class="custom-danger">Danger</h2>
+
+<h2 [class]="successClass">Sucess binding</h2>
+<!-- regular class attribute will be over written in presense of class binding -->
+<h2 [class]="dangerClass" class="custom-success">Danger binding</h2>
+<!-- apply class based of boolean -->
+<h2 [class.custom-danger]="hasError">Conditionally apply class</h2>
+<!-- apply class based of boolean for multiple values -->
+<h2 [ngClass]="messageClasses">Conditionally apply multiple class</h2>
+
+<!-- style binding -->
+<h2 [style.color]="'pink'">Style binding</h2>
+<h2 [style.color]="hasError ? 'red' : 'green'">Style binding</h2>
+<h2 [style.color]="highlightColor">Highlight color</h2>
+<h2 [ngStyle]="customStyles">Highlight color</h2>
+
+<!-- event binding -->
+<h1>{{displayText}}</h1>
+<button (click)="onCLick()">Greet</button>
+<button (click)="onCLickPassEvent($event)">Pass Event</button>
+
+<button (click)="displayText='inline event handler'">Inline event handler</button>
+
+<!-- template ref variable -->
+<hr>
+<input #userInput type="text">
+<button (click)="logMessage(userInput.value)">Log</button>
+
+<!-- two way binding ngModel bannan in a box-->
+<!-- import forms module -->
+<hr>
+{{someValue}}<br>
+<input [(ngModel)] = "someValue" type="text">
+
+
+<!-- add or remove elemet form dom -->
+<h2 *ngIf = "true">Hey yo</h2>
+<h2 *ngIf = "displayThis">displayThis</h2>
+
+<!-- if else -->
+<h2 *ngIf = "displayThis; else elseBlock">ifDisplayThis</h2>
+
+<ng-template #elseBlock>
+<h2>elseDisplayThis</h2>
+</ng-template>
+
+<!-- alternate solution -->
+<div *ngIf = "displayThis; then displayOne; else displayTwo"></div>
+
+<ng-template #displayOne>
+<h2>Display One</h2>
+</ng-template>
+
+<ng-template #displayTwo>
+<h2>Display Two</h2>
+</ng-template>
+
+<!-- switch -->
+<div [ngSwitch]="color">
+<div *ngSwitchCase="'red'">Red is the color</div>
+<div *ngSwitchCase="'green'">green is the color</div>
+<div *ngSwitchDefault>Default is the color</div>
+</div>
+
+<!-- for loop -->
+<div *ngFor="let color of colors; index as i">
+    <h2>{{i+1}} : {{color}}</h2>
+</div>
+<div *ngFor="let color of colors; first as f">
+    <h2>{{f}} : {{color}}</h2>
+</div>
+<div *ngFor="let color of colors; last as l">
+    <h2>{{l}} : {{color}}</h2>
+</div>
+
+
+
+<h2>## {{parentData}}</h2>
+<h2>--{{receivedFromParentComponent}}</h2>
+
+<!-- child to parent -->
+<button (click)="sendToParent()" class="button">Send to parent</button>
+
+<!-- pipes -->
+<h2>{{myString | uppercase}}</h2>
+<h2>{{myString | titlecase}}</h2>
+<h2>{{myString | slice:2}}</h2>
+<!-- upto but not included -->
+<h2>{{myString | slice:2:5}}</h2>
+
+<h2>{{myJson | json}}</h2>
+<!-- minimumber.minimumofdecimal:maxofdecimal -->
+<h2>{{9.999 | number:'1.2-3'}}</h2>
+<h2>{{9.999 | number:'3.4-5'}}</h2>
+<h2>{{9.999 | number:'1.2-2'}}</h2>
+<h2>{{0.25 | percent}}</h2>
+<h2>{{0.25 | currency}}</h2>
+<h2>{{0.25 | currency: 'GBP'}}</h2>
+<h2>{{0.25 | currency: 'GBP' : 'code'}}</h2>
+<h2>{{currentDate}}</h2>
+<h2>{{currentDate | date:'short'}}</h2>
+<h2>{{currentDate | date:'shortDate'}}</h2>
+<h2>{{currentDate | date:'shortTime'}}</h2>
+
+<h2>{{currentDate | date:'medium'}}</h2>
+<h2>{{currentDate | date:'mediumDate'}}</h2>
+<h2>{{currentDate | date:'mediumTime'}}</h2>
+
+<pre>{{users | json}}</pre>
+
+ 
+</div>
+<!-- hide ends here -->
+
+<h2><pre>{{getResponse | json}}</pre></h2>
+<h2><pre>{{error | json}}</pre></h2>
+<label>Param</label>
+<input #requestParam type="text" value="getUsers">
+<button (click)="httpGetRequest(requestParam.value)" class="button">Get Call</button>
+<br>
+<button (click) = "onRoute('none')">Hide the junk</button>
+
+<p #viewchildlocalref >Some value</p>
+<app-profile></app-profile>

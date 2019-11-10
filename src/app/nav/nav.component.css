@@ -1,0 +1,7 @@
+nav ul li a.active {
+    color: rgb(148, 148, 148);
+}
+
+nav ul li a:hover {
+    color: rgb(148, 148, 148);
+}

@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'demo';
+
+  public shareToChildComponent = "Data From Parent";
+  public messageFromChild;
+
+  onActivate(componentReference) {
+    console.log(componentReference);
+    componentReference.receivedFromParentComponent = "Hey hey from parent";
+    
+    if('childEvent' in componentReference ) {
+    componentReference.childEvent.subscribe((data) => {
+      this.messageFromChild =  data;
+      console.log(data);
+   });
+  }
+ }
 }
