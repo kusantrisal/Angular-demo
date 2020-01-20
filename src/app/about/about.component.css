@@ -1,0 +1,15 @@
+   .main-div {
+    /* margin:10%; */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .example-card {   
+    color:white;
+    font-size: larger;
+    width: 90%;
+    height: 90%;
+    text-align: center;
+    /* background: rgba(25, 25, 25, .4); */
+  }

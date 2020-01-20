@@ -1,0 +1,33 @@
+.example-form-field {
+    width: 50%;
+    margin-left: 20%;
+  }
+  .example-container {
+    width: 100%;
+    min-height: 100vh;
+    /* border: 1px solid rgba(0, 0, 0, 0.5); */
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .example-sidenav {
+    padding: 30px;
+    max-width: 30%;
+  }
+  
+  .example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+  .material-icons.color_green { color: rgb(9, 167, 9); }

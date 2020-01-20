@@ -1,0 +1,165 @@
+<div class="container-fluid">
+
+    <button type="button" mat-button (click)="drawer.toggle()">
+        <mat-icon>menu_open</mat-icon>
+    </button>
+    <!-- Search form -->
+    <mat-form-field class="example-form-field">
+        <input matInput type="text" placeholder="search" [(ngModel)]="value">
+        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+        </button>
+        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="drawer.toggle()">
+            <mat-icon>search</mat-icon>
+        </button>
+        <!-- <button mat-button  (click)="drawer.toggle()" >
+                <mat-icon  >search</mat-icon>
+              </button> -->
+    </mat-form-field>
+
+</div>
+
+
+<mat-drawer-container class="example-container">
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+        <h3>Filters</h3>
+        <!-- <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+          <button (click)="showFiller = !showFiller" mat-raised-button>
+                <mat-icon >forward</mat-icon>
+          </button> -->
+
+        <!-- search crieteria -->
+
+        <form class="example-form">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Email">
+            </mat-form-field>
+<br>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="First name">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <br>
+        </form>
+
+        <mat-checkbox>Check me!</mat-checkbox>
+        <br>
+        <div class="example-button-row">
+            <button mat-raised-button>Filter</button>
+            <button mat-raised-button>Reset</button>
+        </div>
+
+    </mat-drawer>
+
+
+
+    <div class="example-sidenav-content">
+
+        <mat-accordion style="width: 100%;">
+           
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <!-- <mat-icon>account_circle</mat-icon> -->
+                    Spring Boot Training
+                    </mat-panel-title>
+                    <mat-panel-description>
+
+                      <mat-icon class="material-icons color_green" >star</mat-icon>
+                      <mat-icon>star</mat-icon>
+                      <mat-icon>star</mat-icon>
+                      <mat-icon>star</mat-icon>
+
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <img class="rounded-circle" src="assets/images/earth.png" alt="Generic placeholder image" width="140" height="140">
+                <h1>Provider Name</h1>
+                <P>I have been working is spring boot for 4 years and can help with any of your needs</P>
+              
+                <mat-chip-list aria-label="Fish selection">
+                        <mat-chip>One fish</mat-chip>
+                        <mat-chip>Two fish</mat-chip>
+                        <mat-chip color="primary" selected>Primary fish</mat-chip>
+                        <mat-chip color="accent" selected>Accent fish</mat-chip>
+                      </mat-chip-list>
+<br>
+                <mat-form-field>
+                        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                      </mat-form-field>
+                      
+                      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                      
+                        <!-- Position Column -->
+                        <ng-container matColumnDef="position">
+                          <th mat-header-cell *matHeaderCellDef> No. </th>
+                          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                        </ng-container>
+                      
+                        <!-- Name Column -->
+                        <ng-container matColumnDef="name">
+                          <th mat-header-cell *matHeaderCellDef> Name </th>
+                          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                        </ng-container>
+                      
+                        <!-- Weight Column -->
+                        <ng-container matColumnDef="weight">
+                          <th mat-header-cell *matHeaderCellDef> Weight </th>
+                          <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                        </ng-container>
+                      
+                        <!-- Symbol Column -->
+                        <ng-container matColumnDef="symbol">
+                          <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                          <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                        </ng-container>
+                      
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      </table>
+
+                      
+                <hr>
+                <mat-card-actions>
+                    <button mat-button>View Profile</button>
+                    <button mat-button>Save for later</button>
+                    <button mat-raised-button (click)="openDialog()">Contact</button>
+                </mat-card-actions>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Self aware panel
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Self aware panel
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>I'm visible because I am open</p>
+                </mat-expansion-panel>
+
+        </mat-accordion>
+
+    </div>
+
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+
+</mat-drawer-container>

@@ -1,0 +1,31 @@
+<mat-toolbar>
+
+  <button mat-button routerLink="/home">
+    <mat-icon>home</mat-icon>
+  </button>
+
+  <button mat-button routerLink="/dashboard" *ngIf="isAutheticated !== null && isAutheticated?.Authenticated"> Dashboard </button>
+
+
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <button mat-button routerLink="/browse">Browse</button>
+  <button mat-button routerLink="/about">About</button>
+
+  <button mat-button [matMenuTriggerFor]="aboveMenu"  *ngIf="isAutheticated?.Authenticated">
+    <mat-icon>arrow_drop_down_circle</mat-icon>
+  </button>
+
+  <mat-menu #aboveMenu="matMenu" yPosition="above">
+    <button mat-menu-item routerLink="/profile" >
+      <span>{{isAutheticated?.Principal}}'s Profile</span></button>
+    <button mat-menu-item routerLink="/profile/edit">Settings</button>
+    <button mat-menu-item routerLink="/login"  (click) = "cleanUp()" >Sign Out</button>
+  </mat-menu>
+
+
+  <button mat-button routerLink="/login" *ngIf="!isAutheticated?.Authenticated">Login</button>
+
+</mat-toolbar>

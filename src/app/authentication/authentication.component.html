@@ -1,0 +1,49 @@
+<div class="main-div">
+    <mat-card class="example-card">
+
+        <mat-card-title *ngIf="showLogInForm">Log in </mat-card-title>
+        <mat-card-title *ngIf="!showLogInForm">Sign up </mat-card-title>
+        <mat-card-content>
+
+            <!-- login form -->
+            <form class="example-form" *ngIf="showLogInForm; else showSignUpFormRef" [formGroup]="logInForm">
+                <mat-form-field class="example-full-width">
+                    <input matInput formControlName="username" type="text" placeholder="Username" >
+                    <mat-error *ngIf="logInForm.invalid && logInForm.get('username').errors?.required">Username is
+                        required</mat-error>
+                    <mat-error *ngIf="logInForm.invalid && logInForm.get('username').errors?.minlength">Username must be
+                        atleast 2 char long</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput formControlName="password" type="password" placeholder="Password" >
+                </mat-form-field>
+            </form>
+
+
+            <!-- sign up form -->
+            <ng-template #showSignUpFormRef>
+                <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Email">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="First name">
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Password">
+                    </mat-form-field>
+                </form>
+            </ng-template>
+        </mat-card-content>
+
+        <!-- switch between login and sign up -->
+        <mat-card-actions class="custom-center">
+            <button mat-button (click)="showLoginForm()">LogIn</button>
+            <button mat-button (click)="showSignUpForm()">Sign Up</button>
+        </mat-card-actions>
+
+    </mat-card>
+</div>
