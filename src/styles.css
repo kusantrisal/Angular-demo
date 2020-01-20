@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import "~@angular/material/prebuilt-themes/deeppurple-amber.css"; */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+* {
+    font-family: 'Open Sans', sans-serif;
+   }
+
+body, html{
+    margin: 0;
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+      background-color:rgb(252, 252, 252);
+      /* Global Background image can be added here */
+      /* background-image: url("https://images.unsplash.com/photo-1542909588-66492252c919?ixlib=rb-1.2.1&auto=format&fit=crop&w=1949&q=80");  */
+      height: 1000px;
+      background-position: center;
+      background-repeat: repeat-y;
+      background-size: cover;
+      position: relative;
+}
+
+
+
